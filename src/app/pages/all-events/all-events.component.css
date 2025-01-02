@@ -1,0 +1,171 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set Background for the Whole Page */
+body {
+  background-color: #1c3b57;
+  /* Dark blue background similar to the slider */
+  font-family: Arial, sans-serif;
+  color: white;
+  /* Text color for contrast */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
+}
+
+/* Slider Container */
+.slider-container {
+  position: relative;
+  width: 80%;
+  margin: 40px auto 20px;
+  /* Add top margin for padding */
+  /* padding-top: 10px;
+  Add padding from the top */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #1c3b57;
+}
+
+/* Slider */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+/* Slider Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4f6e8a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slider-btn:hover {
+  background-color: #eb5d57;
+  transform: scale(1.1);
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+/* Events Section */
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 20px auto;
+  width: 80%;
+  padding: 0 15px;
+  /* Added padding for better spacing on left and right */
+}
+
+/* Individual Event Card */
+.event-card {
+  background-color: #2a4a67;
+  border: 1px solid #4f6e8a;
+  border-radius: 10px;
+  overflow: hidden;
+  width: calc(32% - 10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  /* Add margin to ensure bottom spacing */
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+.event-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.event-details {
+  padding: 15px;
+  color: white;
+}
+
+.event-title {
+  font-size: 1.6rem;
+  margin: 0 0 10px;
+  color: #eb5d57;
+}
+
+.details-button {
+  background-color: #eb5d57;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.details-button:hover {
+  background-color: #c04c47;
+  transform: scale(1.02);
+}
+
+/* Loading Text */
+.no-events {
+  text-align: center;
+  font-size: 18px;
+  color: #95a3b3;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .event-card {
+    width: calc(48% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-image {
+    height: 300px;
+  }
+
+  .events-container {
+    width: 90%;
+  }
+
+  .event-card {
+    width: 100%;
+  }
+}

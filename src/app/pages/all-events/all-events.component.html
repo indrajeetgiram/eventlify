@@ -1,0 +1,36 @@
+<body>
+    <!-- Image Slider -->
+    <div class="slider-container">
+        <button class="slider-btn prev" (click)="prevSlide()">&#10094;</button>
+        <div class="slider">
+            <img [src]="sliderImages[currentSlide]" alt="Slider Image" class="slider-image" />
+        </div>
+        <button class="slider-btn next" (click)="nextSlide()">&#10095;</button>
+    </div>
+
+    <!-- Events Section -->
+    <div id="events">
+        <div *ngIf="events.length > 0; else noEvents" class="events-container">
+            <div class="event-card" *ngFor="let event of events">
+                <img [src]="event.imageUrl" alt="{{ event.eventName }}" class="event-image" />
+                <div class="event-details">
+                    <h3 class="event-title">{{ event.eventName }}</h3>
+                    <p><strong>Organizer:</strong> {{ event.organizerName }}</p>
+                    <p><strong>Location:</strong> {{ event.location }}</p>
+                    <p>
+                        <strong>Start Date:</strong> {{ event.startDate }} <br />
+                        <strong>End Date:</strong> {{ event.endDate }}
+                    </p>
+                    <p><strong>Price:</strong> {{ event.price }}</p>
+                    <button class="details-button" (click)="goEventDetailpage(event.eventId)">
+                        Event Details
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #noEvents>
+            <p class="no-events">Loading events...</p>
+        </ng-template>
+    </div>
+</body>

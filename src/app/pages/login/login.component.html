@@ -1,0 +1,15 @@
+<body>
+    <div class="form">
+        <div class="form-title">Sign In</div>
+        <div class="input-container">
+            <input type="email" [(ngModel)]="loginobj.ContactNo" placeholder="ContactNo">
+        </div>
+        <div class="input-container password-container">
+            <input type="password" [(ngModel)]="loginobj.Password" placeholder="Password">
+        </div>
+        <button class="submit" (click)="onLogin()">Submit</button>
+        <div class="login-link">
+            Don't have an account? <a class="link" routerLink='/signup'>Sign up</a>
+        </div>
+    </div>
+</body>

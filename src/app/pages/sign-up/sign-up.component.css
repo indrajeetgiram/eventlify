@@ -1,0 +1,124 @@
+/* Sign-Up Page Styles */
+body#signup-page {
+    background-color: #1c3b57; /* Dark blue background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.form {
+    background-color: #2a4a67; /* Slightly lighter dark blue */
+    padding: 20px 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #eb5d57;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #4f6e8a;
+    border-radius: 5px;
+    background-color: #1c3b57;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.input-container input::placeholder {
+    color: #95a3b3;
+}
+
+.input-container input:focus {
+    border-color: #eb5d57;
+    outline: none;
+    background-color: #ffffff;
+    color: #1c3b57;
+}
+
+.role-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.role-btn {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4f6e8a;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect */
+.role-btn:hover {
+    background-color: #eb5d57; /* Different color when hovered */
+}
+
+/* Selected (clicked) state style */
+.role-btn.selected {
+    background-color: #c04c47; /* Color when button is selected */
+    border: 2px solid #eb5d57; /* Add border to indicate selection */
+}
+
+/* Prevent hover effect when the button is selected */
+.role-btn.selected:hover {
+    background-color: #c04c47; /* Keep selected color */
+}
+
+/* The rest of the styling remains unchanged */
+.submit {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eb5d57;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit:hover {
+    background-color: #c04c47;
+    transform: scale(1.02);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #eb5d57;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

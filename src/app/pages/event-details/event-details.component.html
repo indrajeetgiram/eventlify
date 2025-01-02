@@ -1,0 +1,35 @@
+<div class="container">
+    <!-- Main Event -->
+    <div class="cart-container">
+        <h2>{{ eventDetails?.eventName }}</h2>
+        <img [src]="eventDetails?.imageUrl" alt="{{ eventDetails?.eventName }}" class="event-image" />
+        <p><strong>Event ID:</strong> {{ eventDetails?.eventId }}</p>
+        <p><strong>Start Date:</strong> {{ eventDetails?.startDate | date }}</p>
+        <p><strong>Start Time:</strong> {{ eventDetails?.startTime }}</p>
+        <p><strong>End Date:</strong> {{ eventDetails?.endDate | date }}</p>
+        <p><strong>Organizer:</strong> {{ eventDetails?.organizerId }}</p>
+        <p><strong>Price:</strong> ₹{{ eventDetails?.price }}</p>
+        <p><strong>Location:</strong> {{ eventDetails?.location }}</p>
+        <button class="btn btn-primary">Book</button>
+        <button class="btn btn-secondary" (click)="getRelatedEvents(eventDetails?.organizerId)">
+            Get More Organizer Events
+        </button>
+    </div>
+
+    <!-- Related Events -->
+    <div class="related-events">
+        <h3>Other Events by the Organizer</h3>
+        <div *ngIf="relatedEvents.length > 0; else noEvents">
+            <ul>
+                <li *ngFor="let event of relatedEvents">
+                    <img [src]="event.imageUrl" alt="{{ event.eventName }}" class="related-event-image" />
+                    <p><strong>{{ event.eventName }}</strong></p>
+                    <p>{{ event.startDate | date }} - {{ event.location }}</p>
+                </li>
+            </ul>
+        </div>
+        <ng-template #noEvents>
+            <p>No other events found for this organizer.</p>
+        </ng-template>
+    </div>
+</div>
