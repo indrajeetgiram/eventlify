@@ -3,13 +3,17 @@
     <h1 class="logo">Eventlify</h1>
     <nav>
       <ul class="nav-links">
-        <li><a class="nav-link" routerLink="home">home</a></li>
-        <li><a class="nav-link" routerLink="allevents">allevents</a></li>
-        <li><a class="nav-link" routerLink="mybookings">Edit event</a></li>
-        <li><a class="nav-link" routerLink="mybookings">Filter</a></li>
+        <li><a class="nav-link" routerLink="home">Home</a></li>
+        <li><a class="nav-link" routerLink="allevents">All Events</a></li>
+        <li><a class="nav-link" routerLink="login">My Bookings</a></li>
       </ul>
     </nav>
-    <a class="call-btn" routerLink="login">Login</a>
+
+    <!-- Show Login if not logged in -->
+    <a class="call-btn" *ngIf="!isLoggedIn" routerLink="login">Login</a>
+
+    <!-- Show Logout if logged in -->
+    <a class="call-btn" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
   </div>
 </div>
 

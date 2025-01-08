@@ -1,0 +1,151 @@
+/* Styling for the Create Event Form */
+.create-event-form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.create-event-form h2 {
+    text-align: center;
+    color: #333;
+}
+
+.create-event-form .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.create-event-form label {
+    font-weight: bold;
+    margin-right: 10px;
+    width: 30%;
+}
+
+.create-event-form input[type="text"],
+.create-event-form input[type="date"],
+.create-event-form input[type="time"],
+.create-event-form input[type="number"],
+.create-event-form input[type="checkbox"] {
+    width: 65%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-event-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.create-event-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the Events Table */
+.events-table {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.events-table h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.events-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.events-table th,
+.events-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.events-table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+}
+
+.events-table td {
+    vertical-align: middle;
+}
+
+/* Styling for Edit and Delete Buttons */
+.button-container {
+    display: flex;
+    gap: 10px;
+    /* Space between buttons */
+    justify-content: center;
+    /* Align buttons horizontally */
+}
+
+button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:focus {
+    outline: none;
+}
+
+button.edit-button {
+    background-color: #28a745;
+    /* Green for Edit */
+    color: white;
+}
+
+button.delete-button {
+    background-color: #dc3545;
+    /* Red for Delete */
+    color: white;
+}
+
+/* Hover Effects */
+button.edit-button:hover {
+    background-color: #218838;
+    /* Darker Green for Edit */
+}
+
+button.delete-button:hover {
+    background-color: #c82333;
+    /* Darker Red for Delete */
+}
+
+/* Styling for the Image Column */
+td img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+}
+
+td span {
+    color: #888;
+    font-style: italic;
+}

@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignupComponent {
+loginobj: any;
+onLogin() {
+throw new Error('Method not implemented.');
+}
   signupObj = {
     UserId: 0,
     name: '',

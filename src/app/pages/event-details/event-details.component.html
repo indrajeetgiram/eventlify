@@ -10,10 +10,14 @@
         <p><strong>Organizer:</strong> {{ eventDetails?.organizerId }}</p>
         <p><strong>Price:</strong> ₹{{ eventDetails?.price }}</p>
         <p><strong>Location:</strong> {{ eventDetails?.location }}</p>
-        <button class="btn btn-primary">Book</button>
-        <button class="btn btn-secondary" (click)="getRelatedEvents(eventDetails?.organizerId)">
-            Get More Organizer Events
+        <!-- EventDetailsComponent -->
+        <button class="btn btn-primary" [routerLink]="['/bookTicket', eventDetails?.eventId]">
+            Book
         </button>
+        <!-- <button class="btn btn-secondary" [disabled]="!eventDetails?.organizerId"
+            (click)="getRelatedEvents(eventDetails?.organizerId ?? '')">
+            Get More Organizer Events
+        </button> -->
     </div>
 
     <!-- Related Events -->

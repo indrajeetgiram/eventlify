@@ -1,0 +1,91 @@
+<div class="container">
+    <h2 class="title">🎟️ Book Tickets</h2>
+
+    <!-- User Details Form -->
+    <form [formGroup]="ticketForm" (ngSubmit)="submitForm()" class="form">
+        <!-- User ID and Number of Tickets -->
+        <div class="row">
+            <div class="form-group">
+                <label for="userId">User ID</label>
+                <input type="number" id="userId" formControlName="UserId" placeholder="Enter User ID" />
+            </div>
+            <div class="form-group">
+                <label for="noOfTickets">Number of Tickets</label>
+                <input type="number" id="noOfTickets" formControlName="NoOfTickets"
+                    placeholder="Enter Number of Tickets" />
+            </div>
+        </div>
+
+        <h4>Booking Members</h4>
+        <div class="members" *ngFor="let member of members.controls; let i = index" [formGroupName]="i">
+            <div class="member-card">
+                <!-- Name and Age -->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" formControlName="Name" placeholder="Enter Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" formControlName="Age" placeholder="Enter Age" />
+                    </div>
+                </div>
+                <!-- Identity Card and Card Number -->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="identityCard">Identity Card</label>
+                        <input type="text" id="identityCard" formControlName="IdentityCard"
+                            placeholder="Enter Identity Card Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNo">Card Number</label>
+                        <input type="text" id="cardNo" formControlName="CardNo" placeholder="Enter Card Number" />
+                    </div>
+                </div>
+                <!-- Contact Number -->
+                <div class="row">
+                    <div class="form-group">
+                        <label for="contactNo">Contact Number</label>
+                        <input type="text" id="contactNo" formControlName="ContactNo"
+                            placeholder="Enter Contact Number" />
+                    </div>
+                </div>
+                <button type="button" class="btn-secondary" (click)="removeMember(i)">Remove Member</button>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-outline" (click)="addMember()">+ Add Member</button>
+            <button type="submit" class="btn-primary">Submit Booking</button>
+        </div>
+    </form>
+
+    <!-- Submitted Data Table -->
+    <h3 class="subtitle">📋 Submitted Data</h3>
+    <table class="data-table" *ngIf="submittedData.length > 0">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>No. of Tickets</th>
+                <th>Members</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of submittedData; let i = index">
+                <td>{{ data.UserId }}</td>
+                <td>{{ data.NoOfTickets }}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let member of data.EventBookingMembers">
+                            {{ member.Name }} (Age: {{ member.Age }}, Contact: {{ member.ContactNo }})
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <button class="btn-danger" (click)="deleteRecord(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

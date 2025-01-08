@@ -15,12 +15,12 @@ export class EventDetailsComponent {
   constructor(private activateRoute: ActivatedRoute, private http: HttpClient) {
     this.activateRoute.params.subscribe((res) => {
       this.eventId = res;
-      this.getEventDetails();
+      this.fetchEventAndRelatedData(); // Fetch both event details and related events
     });
   }
 
-  // Fetch main event details
-  getEventDetails() {
+  // Fetch both event details and related events
+  fetchEventAndRelatedData() {
     this.http
       .get(
         `https://freeapi.miniprojectideas.com/api/EventBooking/GetEventById?id=${this.eventId.id}`
@@ -29,7 +29,9 @@ export class EventDetailsComponent {
         (res: any) => {
           if (res.result === true) {
             this.eventDetails = res.data;
-
+            // After fetching event details, fetch related events
+            const organizerId = this.eventDetails?.organizerId ?? ''; // Use default empty string if undefined
+            this.getRelatedEvents(organizerId);
           } else {
             alert('Failed to fetch event details');
           }
@@ -42,20 +44,29 @@ export class EventDetailsComponent {
   }
 
   // Fetch related events by the same organizer
-  getRelatedEvents(id: any) {
-    this.http.get("https://freeapi.miniprojectideas.com/api/EventBooking/GetEventsByOrganizer?organizerId=" + id).subscribe(
-      (res: any) => {
-        if (res.result === true) {
-          this.relatedEvents = res.data; // Store the related events
-        } else {
-          alert('Failed to fetch related events');
+  getRelatedEvents(organizerId: string) {
+    if (!organizerId) {
+      console.warn('Organizer ID is undefined or empty, skipping related events fetch.');
+      return;
+    }
+
+    this.http
+      .get(
+        `https://freeapi.miniprojectideas.com/api/EventBooking/GetEventsByOrganizer?organizerId=${organizerId}`
+      )
+      .subscribe(
+        (res: any) => {
+          if (res.result === true) {
+            this.relatedEvents = res.data; // Store the related events
+          } else {
+            alert('Failed to fetch related events');
+          }
+        },
+        (error) => {
+          console.error('Error fetching related events:', error);
+          alert('An error occurred while fetching related events');
         }
-      },
-      (error) => {
-        console.error('Error fetching related events:', error);
-        alert('An error occurred while fetching related events');
-      }
-    );
+      );
   }
 }
 
@@ -65,7 +76,7 @@ export interface EventDetails {
   startDate: string;
   startTime: string;
   endDate: string;
-  organizerId: string;
+  organizerId: string; // Ensure this is a string
   userId: number;
   price: number;
   location: string;

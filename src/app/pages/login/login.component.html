@@ -1,4 +1,4 @@
-<body>
+<body id="signin-page">
     <div class="form">
         <div class="form-title">Sign In</div>
         <div class="input-container">
@@ -6,6 +6,12 @@
         </div>
         <div class="input-container password-container">
             <input type="password" [(ngModel)]="loginobj.Password" placeholder="Password">
+        </div>
+        <div class="role-buttons">
+            <button class="role-btn organiser" [ngClass]="{'selected': loginobj.Role === 'Organiser'}"
+                (click)="loginobj.Role = 'Organiser'">I am an organiser</button>
+            <button class="role-btn customer" [ngClass]="{'selected': loginobj.Role === 'Customer'}"
+                (click)="loginobj.Role = 'Customer'">I am a customer</button>
         </div>
         <button class="submit" (click)="onLogin()">Submit</button>
         <div class="login-link">

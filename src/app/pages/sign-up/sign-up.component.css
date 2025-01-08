@@ -1,6 +1,7 @@
 /* Sign-Up Page Styles */
 body#signup-page {
-    background-color: #1c3b57; /* Dark blue background */
+    background-color: #1c3b57;
+    /* Dark blue background */
     color: white;
     display: flex;
     justify-content: center;
@@ -11,7 +12,8 @@ body#signup-page {
 }
 
 .form {
-    background-color: #2a4a67; /* Slightly lighter dark blue */
+    background-color: #2a4a67;
+    /* Slightly lighter dark blue */
     padding: 20px 25px;
     border-radius: 10px;
     width: 100%;
@@ -74,18 +76,22 @@ body#signup-page {
 
 /* Hover effect */
 .role-btn:hover {
-    background-color: #eb5d57; /* Different color when hovered */
+    background-color: #eb5d57;
+    /* Different color when hovered */
 }
 
 /* Selected (clicked) state style */
 .role-btn.selected {
-    background-color: #c04c47; /* Color when button is selected */
-    border: 2px solid #eb5d57; /* Add border to indicate selection */
+    background-color: #c04c47;
+    /* Color when button is selected */
+    border: 2px solid #eb5d57;
+    /* Add border to indicate selection */
 }
 
 /* Prevent hover effect when the button is selected */
 .role-btn.selected:hover {
-    background-color: #c04c47; /* Keep selected color */
+    background-color: #c04c47;
+    /* Keep selected color */
 }
 
 /* The rest of the styling remains unchanged */

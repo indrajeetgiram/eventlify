@@ -1,1 +1,136 @@
-<p>dashboard works!</p>
+<!-- Include Font Awesome (if not included already) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Create Event Form -->
+<div class="create-event-form">
+    <h2>Create New Event</h2>
+    <form (ngSubmit)="createEvent()">
+        <div class="form-row">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" [(ngModel)]="newEvent.eventName" name="eventName" required>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" [(ngModel)]="newEvent.description" name="description" required>
+        </div>
+
+        <div class="form-row">
+            <label for="location">Location:</label>
+            <input type="text" id="location" [(ngModel)]="newEvent.location" name="location" required>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" [(ngModel)]="newEvent.startDate" name="startDate" required>
+        </div>
+
+        <div class="form-row">
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime" [(ngModel)]="newEvent.startTime" name="startTime" required>
+
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" [(ngModel)]="newEvent.endDate" name="endDate" required>
+        </div>
+
+        <div class="form-row">
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime" [(ngModel)]="newEvent.endTime" name="endTime" required>
+
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" id="imageUrl" [(ngModel)]="newEvent.imageUrl" name="imageUrl" required>
+        </div>
+
+        <div class="form-row">
+            <label for="capacity">Capacity:</label>
+            <input type="text" id="capacity" [(ngModel)]="newEvent.capacity" name="capacity" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" [(ngModel)]="newEvent.price" name="price" required>
+        </div>
+
+        <div class="form-row">
+            <label for="isIdentityMandatory">Identity Mandatory:</label>
+            <input type="checkbox" id="isIdentityMandatory" [(ngModel)]="newEvent.isIdentityMandatory"
+                name="isIdentityMandatory">
+
+            <label for="isCoupleEntryMandatory">Couple Entry Mandatory:</label>
+            <input type="checkbox" id="isCoupleEntryMandatory" [(ngModel)]="newEvent.isCoupleEntryMandatory"
+                name="isCoupleEntryMandatory">
+        </div>
+
+        <button type="submit">Save New Event</button>
+    </form>
+</div>
+
+<!-- Events Table -->
+<div class="events-table">
+    <h2>All Events</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let event of events">
+                <td *ngIf="selectedEvent?.eventId !== event.eventId">{{ event.eventName }}</td>
+                <td *ngIf="selectedEvent?.eventId === event.eventId">
+                    <input type="text" [(ngModel)]="event.eventName" />
+                </td>
+
+                <td *ngIf="selectedEvent?.eventId !== event.eventId">{{ event.description }}</td>
+                <td *ngIf="selectedEvent?.eventId === event.eventId">
+                    <input type="text" [(ngModel)]="event.description" />
+                </td>
+
+                <td *ngIf="selectedEvent?.eventId !== event.eventId">{{ event.location }}</td>
+                <td *ngIf="selectedEvent?.eventId === event.eventId">
+                    <input type="text" [(ngModel)]="event.location" />
+                </td>
+
+                <td *ngIf="selectedEvent?.eventId !== event.eventId">{{ event.startDate }}</td>
+                <td *ngIf="selectedEvent?.eventId === event.eventId">
+                    <input type="date" [(ngModel)]="event.startDate" />
+                </td>
+
+                <td *ngIf="selectedEvent?.eventId !== event.eventId">{{ event.endDate }}</td>
+                <td *ngIf="selectedEvent?.eventId === event.eventId">
+                    <input type="date" [(ngModel)]="event.endDate" />
+                </td>
+
+                <!-- Image Display in Table -->
+                <td *ngIf="selectedEvent?.eventId !== event.eventId">
+                    <img *ngIf="event.imageUrl" [src]="event.imageUrl" alt="Event Image" width="100" height="100" />
+                    <span *ngIf="!event.imageUrl">No Image</span>
+                </td>
+                <td *ngIf="selectedEvent?.eventId === event.eventId">
+                    <input type="text" [(ngModel)]="event.imageUrl" />
+                    <div *ngIf="event.imageUrl">
+                        <img [src]="event.imageUrl" alt="Image Preview" width="100" height="100">
+                    </div>
+                </td>
+
+                <!-- Actions Column with Font Awesome Icons -->
+                <td>
+                    <div class="button-container">
+                        <button *ngIf="selectedEvent?.eventId !== event.eventId" class="edit-button"
+                            (click)="editEvent(event)">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button *ngIf="selectedEvent?.eventId === event.eventId" class="save-button"
+                            (click)="saveEvent(event)">
+                            <i class="fas fa-save"></i>
+                        </button>
+                        <button class="delete-button" (click)="deleteEvent(event.eventId)">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
